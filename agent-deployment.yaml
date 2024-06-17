@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.31.2 (a92241f79)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: agent
+  name: agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: agent
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.31.2 (a92241f79)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/tutoringplatform-agent-default: "true"
+        io.kompose.service: agent
+    spec:
+      containers:
+        - image: iuliaaaaa/tutoringplatform:agent
+          name: agent
+          ports:
+            - containerPort: 5003
+              hostPort: 5003
+              protocol: TCP
+          resources: {}
+      restartPolicy: Always
+status: {}

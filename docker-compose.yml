@@ -1,0 +1,9 @@
+version: "1"
+services:
+  agent:
+    container_name: agent
+    image: iuliaaaaa/tutoringplatform:agent
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - 5003:5003
